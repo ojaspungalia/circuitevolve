@@ -1,4 +1,5 @@
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo_new.png";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -21,12 +22,12 @@ const Index = () => {
           Design. Iterate. Converge.
         </h1>
 
-        <a
-          href="#"
-          className="rounded-full bg-foreground px-8 py-3 text-sm font-medium tracking-wide text-background transition-opacity duration-200 hover:opacity-85"
+        <Link
+          to="/learn-more"
+          className="rounded-full bg-foreground px-10 py-4 text-base sm:text-lg font-medium tracking-wide text-background transition-transform transition-opacity duration-200 hover:opacity-85 hover:scale-105"
         >
           Learn More
-        </a>
+        </Link>
       </div>
 
       {/* Bottom center: Email */}
@@ -40,3 +41,4 @@ const Index = () => {
 };
 
 export default Index;
+

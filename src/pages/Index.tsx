@@ -459,13 +459,13 @@ const Index = () => {
 
       {/* Bottom center: Email & Request Demo */}
       <div className="pb-4 pt-12 text-center">
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center gap-3">
           <span className="text-lg font-light tracking-wide text-foreground/80 sm:text-xl md:text-2xl">
             hello@circuitevolve.com
           </span>
           <Link
             to="/request-demo"
-            className="rounded-full bg-foreground px-10 py-4 text-base sm:text-lg font-medium tracking-wide text-background transition-transform transition-opacity duration-200 hover:opacity-85 hover:scale-105"
+            className="text-base font-medium text-foreground/70 underline hover:text-foreground transition-colors"
           >
             Request Demo
           </Link>

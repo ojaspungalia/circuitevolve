@@ -133,7 +133,7 @@ const Index = () => {
                     <p>
                       circuitEvolve is a simulator-grounded search system for
                       analog circuit optimization. The system operates directly
-                      on circuit netlists and iteratively proposes modifications
+                      on circuit design schematics and iteratively proposes modifications
                       to both circuit topology and device parameters. Each
                       candidate design is evaluated through SPICE simulation,
                       and the results are used to guide further exploration of
@@ -172,7 +172,7 @@ const Index = () => {
                     <p>
                       circuitEvolve formulates analog design as a
                       simulation-driven optimization framework operating directly
-                      on circuit netlists. Instead of treating the circuit
+                      on circuit design schematics. Instead of treating the circuit
                       structure as fixed, the system searches over both topology
                       and parameter configurations in order to discover designs
                       that satisfy performance constraints.
@@ -185,7 +185,7 @@ const Index = () => {
                     </h2>
                     <p>
                       circuitEvolve performs iterative circuit optimization by
-                      generating candidate netlist modifications, evaluating them
+                      generating candidate design schematic modifications, evaluating them
                       through simulation, and using the resulting performance
                       signals to guide subsequent search. Starting from a
                       baseline circuit, the system repeatedly proposes
@@ -209,7 +209,7 @@ const Index = () => {
                       Step 1 — <span className="underline">Design Specifications and Baseline Circuit:</span> The
                       system begins with a problem specification and an initial
                       circuit design. The starting design may be a baseline
-                      netlist or a parameterized circuit template. In addition
+                      design schematic or a parameterized circuit template. In addition
                       to the circuit description, the system receives a set of
                       design rules and constraints that define the allowable
                       device types, node naming conventions, and bias source
@@ -223,13 +223,13 @@ const Index = () => {
                       devices, modifying current paths, or altering bias
                       configurations. To maintain robustness, the model output
                       is restricted to a structured format that limits changes
-                      to predefined editable sections of the netlist.
+                      to predefined editable sections of the design schematic.
                     </p>
                     <p>
                       Step 3 — <span className="underline">Harness Rebuild:</span> The system extracts the editable
                       portion of the proposal and integrates it into a
                       standardized simulation harness. The harness reconstructs
-                      the complete netlist including supplies, loads, device
+                      the complete design schematic including supplies, loads, device
                       models, stimuli, and measurement directives. This ensures
                       that every candidate design is evaluated within an
                       identical simulation environment.
@@ -407,8 +407,8 @@ const Index = () => {
                           </tr>
                           <tr>
                             <td className="px-3 py-2">Peak performance / evaluations at peak</td>
-                            <td className="px-3 py-2 font-mono">0.70 / 951 = 0.000736</td>
-                            <td className="px-3 py-2 font-mono">1.00 / 200 = 0.005000</td>
+                            <td className="px-3 py-2 font-mono">0.000736</td>
+                            <td className="px-3 py-2 font-mono">0.005000</td>
                             <td className="px-3 py-2 font-semibold">6.79× better</td>
                           </tr>
                         </tbody>
@@ -458,7 +458,7 @@ const Index = () => {
                     <p className="text-xs font-medium uppercase tracking-widest text-foreground/50">Comparison II</p>
                     <h3 className="text-base font-semibold tracking-tight text-foreground">EEsizer</h3>
                     <p>
-                      EEsizer is an industrial sizing optimization framework that applies structured parameter search within a fixed circuit topology. Both systems are evaluated under the same composite objective in the ShinkaEvolve environment. The target threshold is set at the baseline EEsizer peak score of 5.1869.
+                      EEsizer is an industrial sizing optimization framework that applies structured parameter search within a fixed circuit topology. Both systems are evaluated under the same composite objective and SPICE harness. The target threshold is set at 5.
                     </p>
                     <div className="overflow-x-auto">
                       <table className="w-full border-collapse text-sm">
@@ -478,23 +478,14 @@ const Index = () => {
                             <td className="px-3 py-2 font-semibold">1.60× higher</td>
                           </tr>
                           <tr>
-                            <td className="px-3 py-2">Evaluations to reach target (5.1869)</td>
+                            <td className="px-3 py-2">Evaluations to reach target (5)</td>
                             <td className="px-3 py-2 font-mono">25</td>
                             <td className="px-3 py-2 font-mono">7</td>
                             <td className="px-3 py-2 font-semibold">3.57× fewer</td>
                           </tr>
-                          <tr>
-                            <td className="px-3 py-2">Peak performance / evaluations at peak</td>
-                            <td className="px-3 py-2 font-mono">5.1869 / 25 = 0.2075</td>
-                            <td className="px-3 py-2 font-mono">8.3003 / 89 = 0.0933</td>
-                            <td className="px-3 py-2 text-foreground/50">n/a</td>
-                          </tr>
                         </tbody>
                       </table>
                     </div>
-                    <p>
-                      EEsizer converges to its peak score within a small number of evaluations because the search is confined to parameter adjustment within a fixed topology. circuitEvolve uses more evaluations to reach its peak because it continues exploring structural modifications beyond the parameter regime. The result is a final score 1.60× higher, reflecting configurations that parameter-only search cannot reach.
-                    </p>
                   </div>
 
                   {/* AmpAgent section */}
@@ -503,46 +494,6 @@ const Index = () => {
                     <h3 className="text-base font-semibold tracking-tight text-foreground">AmpAgent (AZC Amplifier)</h3>
                     <p>
                       AmpAgent applies an LLM guided optimization loop to the AZC amplifier, a widely used analog benchmark circuit. Performance is measured using the IFOMS objective, which aggregates gain-bandwidth product, phase margin, supply current, and load conditions into a single scalar. We compare the best circuit found by AmpAgent against the best circuit found by circuitEvolve on the same task.
-                    </p>
-
-                    <div className="overflow-x-auto">
-                      <table className="w-full border-collapse text-sm">
-                        <caption className="mb-2 text-left text-xs font-medium uppercase tracking-widest text-foreground/50">
-                          AZC circuit performance
-                        </caption>
-                        <thead>
-                          <tr className="border-b-2 border-foreground/20">
-                            <th className="px-3 py-2 text-left font-semibold">System</th>
-                            <th className="px-3 py-2 text-left font-semibold">GBW (MHz)</th>
-                            <th className="px-3 py-2 text-left font-semibold">PM (deg)</th>
-                            <th className="px-3 py-2 text-left font-semibold">GainDC (dB)</th>
-                            <th className="px-3 py-2 text-left font-semibold">Idd (mA)</th>
-                            <th className="px-3 py-2 text-left font-semibold">IFOMS</th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-foreground/10">
-                          <tr>
-                            <td className="px-3 py-2">AmpAgent</td>
-                            <td className="px-3 py-2 font-mono">1.01</td>
-                            <td className="px-3 py-2 font-mono">61.0</td>
-                            <td className="px-3 py-2 font-mono">133</td>
-                            <td className="px-3 py-2 font-mono">0.047</td>
-                            <td className="px-3 py-2 font-mono">322,340</td>
-                          </tr>
-                          <tr>
-                            <td className="px-3 py-2">circuitEvolve</td>
-                            <td className="px-3 py-2 font-mono">1.8689</td>
-                            <td className="px-3 py-2 font-mono">69.19</td>
-                            <td className="px-3 py-2 font-mono">92.97</td>
-                            <td className="px-3 py-2 font-mono">0.0652</td>
-                            <td className="px-3 py-2 font-semibold">429,908</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-
-                    <p>
-                      circuitEvolve finds a circuit with 1.85× higher gain-bandwidth product and 8.19 degrees greater phase margin, at the cost of modestly higher supply current. The net IFOMS score is 429,908 against 322,340 for AmpAgent, a 1.33× improvement.
                     </p>
 
                     <p>
@@ -559,6 +510,7 @@ const Index = () => {
                             <th className="px-3 py-2 text-left font-semibold">Metric</th>
                             <th className="px-3 py-2 text-left font-semibold">AmpAgent</th>
                             <th className="px-3 py-2 text-left font-semibold">circuitEvolve</th>
+                            <th className="px-3 py-2 text-left font-semibold">Improvement</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-foreground/10">
@@ -566,16 +518,19 @@ const Index = () => {
                             <td className="px-3 py-2">Peak performance</td>
                             <td className="px-3 py-2 font-mono">322,340</td>
                             <td className="px-3 py-2 font-semibold">429,908</td>
+                            <td className="px-3 py-2 font-semibold">1.33× higher</td>
                           </tr>
                           <tr>
                             <td className="px-3 py-2">Evaluations to reach target (192,000)</td>
                             <td className="px-3 py-2 font-mono">20</td>
                             <td className="px-3 py-2 font-semibold">3</td>
+                            <td className="px-3 py-2 font-semibold">6.67× fewer</td>
                           </tr>
                           <tr>
                             <td className="px-3 py-2">Performance at target / evaluations used</td>
-                            <td className="px-3 py-2 font-mono">192,000 / 20 = 9,600</td>
-                            <td className="px-3 py-2 font-semibold">205,118 / 3 = 68,373</td>
+                            <td className="px-3 py-2 font-mono">9,600</td>
+                            <td className="px-3 py-2 font-semibold">68,373</td>
+                            <td className="px-3 py-2 font-semibold">7.12× better</td>
                           </tr>
                         </tbody>
                       </table>

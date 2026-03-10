@@ -74,8 +74,6 @@ const LearnMore = () => {
           </h2>
           <div className="mt-2 space-y-1">
             <p>hello@circuitevolve.com</p>
-            <p>ojas@circuitevolve.com</p>
-            <p>arnav@circuitevolve.com</p>
           </div>
         </div>
       </div>

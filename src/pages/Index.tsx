@@ -369,7 +369,7 @@ const Index = () => {
 
                   {/* Umbrella intro */}
                   <p>
-                    We compare circuitEvolve against three optimization systems from the literature: <strong>BAGNet</strong>, a reinforcement learning based analog sizing system evaluated on the two-stage amplifier task; <strong>EEsizer</strong>, an analog circuit sizing tool from the literature; and <strong>AmpAgent</strong>, a recently proposed method for LLM guided circuit optimization evaluated on the AZC amplifier benchmark. Each comparison reports three quantities: peak performance reached during optimization, number of evaluations required to reach a defined target threshold, and a search-efficiency score computed as peak performance divided by total evaluations at peak. These metrics jointly characterize solution quality, sample efficiency, and optimization effectiveness under a fixed evaluation budget.
+                    We compare circuitEvolve against three optimization systems from the literature: <strong>BAGNet</strong>, a reinforcement learning based analog sizing system evaluated on the two-stage amplifier task; <strong>EEsizer</strong>, a general purpose agent for analog circuit sizing; and <strong>AmpAgent</strong>, a recently proposed method for LLM guided circuit optimization evaluated on the AZC amplifier benchmark. Each comparison reports three quantities: peak performance reached during optimization, number of evaluations required to reach a defined target threshold, and a search-efficiency score computed as peak performance divided by total evaluations at peak. These metrics jointly characterize solution quality, sample efficiency, and optimization effectiveness under a fixed evaluation budget.
                   </p>
 
                   {/* BAGNet section */}
@@ -542,7 +542,7 @@ const Index = () => {
                   <div className="space-y-3 border-t border-foreground/10 pt-5">
                     <h3 className="text-base font-semibold tracking-tight text-foreground">Summary</h3>
                     <p>
-                      Across all three comparisons the results are consistent. circuitEvolve achieves higher peak performance, reaches target thresholds in fewer evaluations, and produces stronger search-efficiency scores relative to each baseline. The gains are largest in sample efficiency, where circuitEvolve requires between 3.57× and 7.96× fewer evaluations to reach a given performance level. This pattern holds across reinforcement learning based sizing (BAGNet), industrial parameter optimization (EEsizer), and LLM guided circuit search (AmpAgent), suggesting the improvement is not task-specific but reflects a general advantage of simulation-grounded topology exploration over parameter-only optimization strategies.
+                      Across all three comparisons the results are consistent. circuitEvolve achieves higher peak performance, reaches target thresholds in fewer evaluations, and produces stronger search-efficiency scores relative to each baseline. The gains are largest in sample efficiency, where circuitEvolve requires between 3.57× and 7.96× fewer evaluations to reach a given performance level. This pattern holds across reinforcement learning based sizing (BAGNet), general purpose analog sizing (EEsizer), and LLM guided circuit search (AmpAgent), suggesting the improvement is not task-specific but reflects a general advantage of simulation-grounded topology exploration over parameter-only optimization strategies.
                     </p>
                   </div>
 

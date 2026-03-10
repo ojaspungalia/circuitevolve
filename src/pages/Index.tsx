@@ -116,9 +116,6 @@ const Index = () => {
             {isWhatIsOpen && (
               <div className="border-x border-b border-foreground/10 bg-background/60 px-5 pb-5 pt-4 text-sm leading-relaxed text-foreground/90 sm:text-base">
                 <div className="space-y-4">
-                  <p className="text-sm font-medium uppercase tracking-[0.18em] text-foreground/60 sm:text-xs">
-                    Technical Note
-                  </p>
                   <div>
                     <p className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
                       What is circuitEvolve?

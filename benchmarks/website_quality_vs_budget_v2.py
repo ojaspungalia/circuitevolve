@@ -99,8 +99,6 @@ def main():
         ax.text(bag_target_x + 10, 0.55, f"target reached\nat {bag_target_x}", color=BLUE, fontsize=11.5)
 
     ax.set_title("Optimization Quality vs Search Budget", fontsize=26, fontweight="bold", color=TEXT, loc="left", pad=20)
-    ax.text(0.0, 1.02, "circuitEvolve reaches higher performance with substantially fewer evaluations.",
-            transform=ax.transAxes, color=MUTED, fontsize=11.5, ha="left")
 
     ce_handle = mlines.Line2D([], [], color=GREEN, linewidth=4, label="circuitEvolve")
     bag_handle = mlines.Line2D([], [], color=BLUE, linewidth=4, label="BAGNet")

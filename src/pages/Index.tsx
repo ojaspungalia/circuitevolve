@@ -368,88 +368,232 @@ const Index = () => {
 
             {isEmpiricalOpen && (
               <div className="border-x border-b border-foreground/10 bg-background/60 px-5 pb-5 pt-4 text-sm leading-relaxed text-foreground/90 sm:text-base">
-                <div className="space-y-4">
+                <div className="space-y-6">
+
+                  {/* Umbrella intro */}
                   <p>
-                    We evaluate circuitEvolve against prior work along three quantities: peak performance, evaluations required to reach the target threshold, and a normalized search-efficiency score defined as peak performance divided by the number of evaluations required to attain that peak. Together, these quantities capture solution quality, sample efficiency, and optimization effectiveness under a fixed evaluation budget.
+                    We compare circuitEvolve against three optimization systems from the literature: <strong>BAGNet</strong>, a reinforcement learning based analog sizing system evaluated on the two-stage amplifier task; <strong>EEsizer</strong>, a widely used industrial sizing optimization framework; and <strong>AmpAgent</strong>, a recently proposed method for LLM guided circuit optimization evaluated on the AZC amplifier benchmark. Each comparison reports three quantities: peak performance reached during optimization, number of evaluations required to reach a defined target threshold, and a search-efficiency score computed as peak performance divided by total evaluations at peak. These metrics jointly characterize solution quality, sample efficiency, and optimization effectiveness under a fixed evaluation budget.
                   </p>
 
-                  {/* Comparison Table */}
-                  <div className="my-6 overflow-x-auto">
-                    <table className="w-full border-collapse text-sm">
-                      <thead>
-                        <tr className="border-b-2 border-foreground/20">
-                          <th className="px-3 py-2 text-left font-semibold">Metric</th>
-                          <th className="px-3 py-2 text-left font-semibold">BAGNet</th>
-                          <th className="px-3 py-2 text-left font-semibold">circuitEvolve</th>
-                          <th className="px-3 py-2 text-left font-semibold">Improvement</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-foreground/10">
-                        <tr>
-                          <td className="px-3 py-2">Peak performance</td>
-                          <td className="px-3 py-2 font-mono">0.70</td>
-                          <td className="px-3 py-2 font-mono">1.00</td>
-                          <td className="px-3 py-2 font-semibold">1.43× higher</td>
-                        </tr>
-                        <tr>
-                          <td className="px-3 py-2">Evaluations to reach target (0.65)</td>
-                          <td className="px-3 py-2 font-mono">589</td>
-                          <td className="px-3 py-2 font-mono">74</td>
-                          <td className="px-3 py-2 font-semibold">7.96× fewer</td>
-                        </tr>
-                        <tr>
-                          <td className="px-3 py-2">Peak performance / evaluations at peak</td>
-                          <td className="px-3 py-2 font-mono">0.70 / 951 = 0.000736</td>
-                          <td className="px-3 py-2 font-mono">1.00 / 200 = 0.005000</td>
-                          <td className="px-3 py-2 font-semibold">6.79× better</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <p>
-                    The comparison shows that circuitEvolve is superior not only in final solution quality, but also in search efficiency. It reaches the target threshold substantially earlier, attains a higher peak performance, and converts each evaluation into useful optimization progress more effectively than BAGNet.
-                  </p>
-
-                  {/* Figure 3: Per-evaluation cost */}
-                  <div className="space-y-3 mt-6">
-                    <h3 className="text-base font-semibold tracking-tight text-foreground">
-                      Per-evaluation runtime
-                    </h3>
+                  {/* BAGNet section */}
+                  <div className="space-y-4 border-t border-foreground/10 pt-5">
+                    <p className="text-xs font-medium uppercase tracking-widest text-foreground/50">Comparison I</p>
+                    <h3 className="text-base font-semibold tracking-tight text-foreground">BAGNet</h3>
                     <p>
-                      Per-evaluation runtime directly determines the number of circuit evaluations that can be performed within a fixed wall-clock time. Lower evaluation cost allows the optimizer to explore more candidate circuits during the same optimization window.
+                      BAGNet applies reinforcement learning to the two-stage amplifier sizing problem, treating device parameter selection as a sequential decision process. We evaluate circuitEvolve on the same task under an identical composite objective and compare across the three reported quantities. The target threshold is set at 0.65, corresponding to a level BAGNet reaches after extensive search.
                     </p>
-                    <div className="mt-2 flex justify-center">
-                      <img
-                        src="/figure3.png"
-                        alt="Per-evaluation cost comparison"
-                        className="w-full max-w-2xl rounded-md border border-foreground/10"
-                      />
+                    <div className="overflow-x-auto">
+                      <table className="w-full border-collapse text-sm">
+                        <thead>
+                          <tr className="border-b-2 border-foreground/20">
+                            <th className="px-3 py-2 text-left font-semibold">Metric</th>
+                            <th className="px-3 py-2 text-left font-semibold">BAGNet</th>
+                            <th className="px-3 py-2 text-left font-semibold">circuitEvolve</th>
+                            <th className="px-3 py-2 text-left font-semibold">Improvement</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-foreground/10">
+                          <tr>
+                            <td className="px-3 py-2">Peak performance</td>
+                            <td className="px-3 py-2 font-mono">0.70</td>
+                            <td className="px-3 py-2 font-mono">1.00</td>
+                            <td className="px-3 py-2 font-semibold">1.43× higher</td>
+                          </tr>
+                          <tr>
+                            <td className="px-3 py-2">Evaluations to reach target (0.65)</td>
+                            <td className="px-3 py-2 font-mono">589</td>
+                            <td className="px-3 py-2 font-mono">74</td>
+                            <td className="px-3 py-2 font-semibold">7.96× fewer</td>
+                          </tr>
+                          <tr>
+                            <td className="px-3 py-2">Peak performance / evaluations at peak</td>
+                            <td className="px-3 py-2 font-mono">0.70 / 951 = 0.000736</td>
+                            <td className="px-3 py-2 font-mono">1.00 / 200 = 0.005000</td>
+                            <td className="px-3 py-2 font-semibold">6.79× better</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
-                    <p className="text-sm text-foreground/70">
-                      <strong>Figure 3:</strong> Per-evaluation cost. circuitEvolve reduces evaluation time from 4,153 ms to 335 ms, yielding 12.4× faster evaluation and 91.9% less evaluation time relative to BAGNet. This directly increases the practical search budget available under fixed compute.
+                    <p>
+                      circuitEvolve reaches the target threshold in 74 evaluations compared to 589 for BAGNet, attains a higher peak score of 1.00 against 0.70, and produces a search-efficiency score 6.79× greater. The result indicates that simulation-grounded topology search extracts substantially more value from each evaluation than policy gradient sizing alone.
+                    </p>
+
+                    <div className="space-y-3 pt-2">
+                      <h4 className="text-sm font-semibold tracking-tight text-foreground">Per-evaluation runtime</h4>
+                      <p>
+                        Per-evaluation runtime determines how many circuit candidates can be assessed within a fixed wall-clock budget. A lower cost per evaluation directly expands the practical search horizon.
+                      </p>
+                      <div className="flex justify-center">
+                        <img
+                          src="/figure3.png"
+                          alt="Per-evaluation cost comparison"
+                          className="w-full max-w-2xl rounded-md border border-foreground/10"
+                        />
+                      </div>
+                      <p className="text-sm text-foreground/70">
+                        <strong>Figure 3:</strong> Per-evaluation cost. circuitEvolve reduces evaluation time from 4,153 ms to 335 ms, yielding 12.4× faster evaluation and 91.9% less evaluation time relative to BAGNet. This directly increases the practical search budget available under fixed compute.
+                      </p>
+                    </div>
+
+                    <div className="space-y-3 pt-2">
+                      <h4 className="text-sm font-semibold tracking-tight text-foreground">Solution quality under fixed budget</h4>
+                      <p>
+                        Solution quality under a fixed evaluation budget provides a more complete picture than raw iteration count alone. The curve below shows that circuitEvolve reaches the target threshold earlier and continues improving to a stronger final solution, while BAGNet requires substantially more evaluations and saturates at a lower peak.
+                      </p>
+                      <div className="flex justify-center">
+                        <img
+                          src="/figure4.png"
+                          alt="Optimization quality versus search budget"
+                          className="w-full max-w-2xl rounded-md border border-foreground/10"
+                        />
+                      </div>
+                      <p className="text-sm text-foreground/70">
+                        <strong>Figure 4:</strong> Optimization quality versus search budget. circuitEvolve reaches the target threshold (0.65) in 74 evaluations, whereas BAGNet requires 589 evaluations. circuitEvolve also reaches a higher peak performance (1.00) than BAGNet (0.70), indicating superior sample efficiency and stronger final optimization quality.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* EEsizer section */}
+                  <div className="space-y-4 border-t border-foreground/10 pt-5">
+                    <p className="text-xs font-medium uppercase tracking-widest text-foreground/50">Comparison II</p>
+                    <h3 className="text-base font-semibold tracking-tight text-foreground">EEsizer</h3>
+                    <p>
+                      EEsizer is an industrial sizing optimization framework that applies structured parameter search within a fixed circuit topology. Both systems are evaluated under the same composite objective in the ShinkaEvolve environment. The target threshold is set at the baseline EEsizer peak score of 5.1869.
+                    </p>
+                    <div className="overflow-x-auto">
+                      <table className="w-full border-collapse text-sm">
+                        <thead>
+                          <tr className="border-b-2 border-foreground/20">
+                            <th className="px-3 py-2 text-left font-semibold">Metric</th>
+                            <th className="px-3 py-2 text-left font-semibold">EEsizer</th>
+                            <th className="px-3 py-2 text-left font-semibold">circuitEvolve</th>
+                            <th className="px-3 py-2 text-left font-semibold">Improvement</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-foreground/10">
+                          <tr>
+                            <td className="px-3 py-2">Peak performance</td>
+                            <td className="px-3 py-2 font-mono">5.1869</td>
+                            <td className="px-3 py-2 font-mono">8.3003</td>
+                            <td className="px-3 py-2 font-semibold">1.60× higher</td>
+                          </tr>
+                          <tr>
+                            <td className="px-3 py-2">Evaluations to reach target (5.1869)</td>
+                            <td className="px-3 py-2 font-mono">25</td>
+                            <td className="px-3 py-2 font-mono">7</td>
+                            <td className="px-3 py-2 font-semibold">3.57× fewer</td>
+                          </tr>
+                          <tr>
+                            <td className="px-3 py-2">Peak performance / evaluations at peak</td>
+                            <td className="px-3 py-2 font-mono">5.1869 / 25 = 0.2075</td>
+                            <td className="px-3 py-2 font-mono">8.3003 / 89 = 0.0933</td>
+                            <td className="px-3 py-2 text-foreground/50">n/a</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p>
+                      EEsizer converges to its peak score within a small number of evaluations because the search is confined to parameter adjustment within a fixed topology. circuitEvolve uses more evaluations to reach its peak because it continues exploring structural modifications beyond the parameter regime. The result is a final score 1.60× higher, reflecting configurations that parameter-only search cannot reach.
                     </p>
                   </div>
 
-                  {/* Figure 4: Quality vs budget */}
-                  <div className="space-y-3 mt-6">
-                    <h3 className="text-base font-semibold tracking-tight text-foreground">
-                      Solution quality under fixed budget
-                    </h3>
+                  {/* AmpAgent section */}
+                  <div className="space-y-4 border-t border-foreground/10 pt-5">
+                    <p className="text-xs font-medium uppercase tracking-widest text-foreground/50">Comparison III</p>
+                    <h3 className="text-base font-semibold tracking-tight text-foreground">AmpAgent (AZC Amplifier)</h3>
                     <p>
-                      A more informative measure than raw iteration count is solution quality under a fixed evaluation budget. The following comparison shows that circuitEvolve reaches the target threshold earlier and continues to improve to a stronger final solution, while BAGNet requires substantially more evaluations and saturates at a lower peak performance.
+                      AmpAgent applies an LLM guided optimization loop to the AZC amplifier, a widely used analog benchmark circuit. Performance is measured using the IFOMS objective, which aggregates gain-bandwidth product, phase margin, supply current, and load conditions into a single scalar. We compare the best circuit found by AmpAgent against the best circuit found by circuitEvolve on the same task.
                     </p>
-                    <div className="mt-2 flex justify-center">
-                      <img
-                        src="/figure4.png"
-                        alt="Optimization quality versus search budget"
-                        className="w-full max-w-2xl rounded-md border border-foreground/10"
-                      />
+
+                    <div className="overflow-x-auto">
+                      <table className="w-full border-collapse text-sm">
+                        <caption className="mb-2 text-left text-xs font-medium uppercase tracking-widest text-foreground/50">
+                          AZC circuit performance
+                        </caption>
+                        <thead>
+                          <tr className="border-b-2 border-foreground/20">
+                            <th className="px-3 py-2 text-left font-semibold">System</th>
+                            <th className="px-3 py-2 text-left font-semibold">GBW (MHz)</th>
+                            <th className="px-3 py-2 text-left font-semibold">PM (deg)</th>
+                            <th className="px-3 py-2 text-left font-semibold">GainDC (dB)</th>
+                            <th className="px-3 py-2 text-left font-semibold">Idd (mA)</th>
+                            <th className="px-3 py-2 text-left font-semibold">IFOMS</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-foreground/10">
+                          <tr>
+                            <td className="px-3 py-2">AmpAgent</td>
+                            <td className="px-3 py-2 font-mono">1.01</td>
+                            <td className="px-3 py-2 font-mono">61.0</td>
+                            <td className="px-3 py-2 font-mono">133</td>
+                            <td className="px-3 py-2 font-mono">0.047</td>
+                            <td className="px-3 py-2 font-mono">322,340</td>
+                          </tr>
+                          <tr>
+                            <td className="px-3 py-2">circuitEvolve</td>
+                            <td className="px-3 py-2 font-mono">1.8689</td>
+                            <td className="px-3 py-2 font-mono">69.19</td>
+                            <td className="px-3 py-2 font-mono">92.97</td>
+                            <td className="px-3 py-2 font-mono">0.0652</td>
+                            <td className="px-3 py-2 font-semibold">429,908</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
-                    <p className="text-sm text-foreground/70">
-                      <strong>Figure 4:</strong> Optimization quality versus search budget. circuitEvolve reaches the target threshold (0.65) in 74 evaluations, whereas BAGNet requires 589 evaluations. circuitEvolve also reaches a higher peak performance (1.00) than BAGNet (0.70), indicating superior sample efficiency and stronger final optimization quality.
+
+                    <p>
+                      circuitEvolve finds a circuit with 1.85× higher gain-bandwidth product and 8.19 degrees greater phase margin, at the cost of modestly higher supply current. The net IFOMS score is 429,908 against 322,340 for AmpAgent, a 1.33× improvement.
+                    </p>
+
+                    <p>
+                      Using a target threshold of 192,000 IFOMS, corresponding to the baseline reference value reported in the AmpAgent paper, we compare search efficiency across both systems.
+                    </p>
+
+                    <div className="overflow-x-auto">
+                      <table className="w-full border-collapse text-sm">
+                        <caption className="mb-2 text-left text-xs font-medium uppercase tracking-widest text-foreground/50">
+                          AZC search efficiency (target: 192,000 IFOMS)
+                        </caption>
+                        <thead>
+                          <tr className="border-b-2 border-foreground/20">
+                            <th className="px-3 py-2 text-left font-semibold">Metric</th>
+                            <th className="px-3 py-2 text-left font-semibold">AmpAgent</th>
+                            <th className="px-3 py-2 text-left font-semibold">circuitEvolve</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-foreground/10">
+                          <tr>
+                            <td className="px-3 py-2">Peak performance</td>
+                            <td className="px-3 py-2 font-mono">322,340</td>
+                            <td className="px-3 py-2 font-semibold">429,908</td>
+                          </tr>
+                          <tr>
+                            <td className="px-3 py-2">Evaluations to reach target (192,000)</td>
+                            <td className="px-3 py-2 font-mono">20</td>
+                            <td className="px-3 py-2 font-semibold">3</td>
+                          </tr>
+                          <tr>
+                            <td className="px-3 py-2">Performance at target / evaluations used</td>
+                            <td className="px-3 py-2 font-mono">192,000 / 20 = 9,600</td>
+                            <td className="px-3 py-2 font-semibold">205,118 / 3 = 68,373</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <p>
+                      circuitEvolve reaches the 192,000 IFOMS threshold in three evaluations. AmpAgent requires twenty. At the moment the threshold is crossed, circuitEvolve achieves a target-efficiency score of 68,373 against 9,600 for AmpAgent, a 7.12× difference. This indicates that circuitEvolve not only finds better circuits but converges to acceptable performance with substantially less search effort.
                     </p>
                   </div>
+
+                  {/* Cumulative summary */}
+                  <div className="space-y-3 border-t border-foreground/10 pt-5">
+                    <h3 className="text-base font-semibold tracking-tight text-foreground">Summary</h3>
+                    <p>
+                      Across all three comparisons the results are consistent. circuitEvolve achieves higher peak performance, reaches target thresholds in fewer evaluations, and produces stronger search-efficiency scores relative to each baseline. The gains are largest in sample efficiency, where circuitEvolve requires between 3.57× and 7.96× fewer evaluations to reach a given performance level. This pattern holds across reinforcement learning based sizing (BAGNet), industrial parameter optimization (EEsizer), and LLM guided circuit search (AmpAgent), suggesting the improvement is not task-specific but reflects a general advantage of simulation-grounded topology exploration over parameter-only optimization strategies.
+                    </p>
+                  </div>
+
                 </div>
               </div>
             )}

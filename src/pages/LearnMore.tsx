@@ -3,7 +3,7 @@ const LearnMore = () => {
     <div className="min-h-screen bg-background px-6 py-10 md:px-16 md:py-16 text-foreground">
       <div className="mx-auto max-w-3xl space-y-8">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-          Introducing circuitEvolve
+          The Next Era of Analog Design
         </h1>
 
         <div className="space-y-4 text-lg leading-relaxed sm:text-xl">

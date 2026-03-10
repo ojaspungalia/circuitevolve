@@ -4,6 +4,7 @@ import csv
 from pathlib import Path
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.lines as mlines
 
 BG = "#070707"
 PANEL = "#111111"
@@ -34,7 +35,7 @@ def value_at(x, values, target_x):
 
 def main():
     csv_path = Path(__file__).with_name("comparison.csv")
-    out_path = Path(__file__).with_suffix(".png")
+    out_path = Path(__file__).parent / "website_quality_vs_budget_v2.png"
 
     x, bagnet, ce = load_data(csv_path)
 
@@ -86,9 +87,12 @@ def main():
     ax.scatter([ce_peak_x], [ce_peak], s=90, color=GREEN, zorder=5)
     ax.scatter([bag_peak_x], [bag_peak], s=90, color=BLUE, zorder=5)
 
+    # circuitEvolve peak annotation
     ax.text(ce_peak_x + 14, ce_peak - 0.07, f"peak = {ce_peak:.2f}\nat {ce_peak_x} evals",
             color=GREEN, fontsize=13)
-    ax.text(835, 0.71, f"peak = {bag_peak:.2f}\nat {bag_peak_x} evals",
+
+    # BAGNet peak annotation — top right where BAGNet label was
+    ax.text(885, 0.72, f"peak = {bag_peak:.2f}\nat {bag_peak_x} evals",
             color=BLUE, fontsize=13)
 
     if ce_target_x is not None:
@@ -103,8 +107,27 @@ def main():
     ax.text(0.0, 1.02, "circuitEvolve reaches higher performance with substantially fewer evaluations.",
             transform=ax.transAxes, color=MUTED, fontsize=12.5, ha="left")
 
-    ax.text(70, 0.80, "circuitEvolve", color=GREEN, fontsize=26, fontweight="bold")
-    ax.text(885, 0.77, "BAGNet", color=BLUE, fontsize=26, fontweight="bold")
+    # Legend key — bottom left inside the chart
+    ce_handle = mlines.Line2D([], [], color=GREEN, linewidth=4, label="circuitEvolve")
+    bag_handle = mlines.Line2D([], [], color=BLUE, linewidth=4, label="BAGNet")
+    legend = ax.legend(
+        handles=[ce_handle, bag_handle],
+        loc="lower right",
+        fontsize=22,
+        frameon=True,
+        framealpha=0.25,
+        facecolor=PANEL,
+        edgecolor=GRID,
+        labelcolor=[GREEN, BLUE],
+        handlelength=2.2,
+        handleheight=1.4,
+        borderpad=0.9,
+        labelspacing=0.6,
+    )
+    for text, color in zip(legend.get_texts(), [GREEN, BLUE]):
+        text.set_color(color)
+        text.set_fontweight("bold")
+        text.set_fontsize(22)
 
     panel = fig.add_axes([0.68, 0.15, 0.27, 0.73], facecolor=PANEL)
     panel.set_xticks([]); panel.set_yticks([])

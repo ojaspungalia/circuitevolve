@@ -3,35 +3,28 @@ from __future__ import annotations
 from pathlib import Path
 import matplotlib.pyplot as plt
 
-BG = "#070707"
-PANEL = "#111111"
-TEXT = "#F5F5F7"
-MUTED = "#A1A1A6"
-GRID = "#2C2C2E"
-BLUE = "#4DA3FF"
-GREEN = "#30D158"
-ACCENT = "#FF2D55"
+BG = "#F2EDE4"
+TEXT = "#1C1917"
+MUTED = "#6B6560"
+GRID = "#D4CEC6"
+BLUE = "#4A6FA5"
+GREEN = "#6B8F3E"
 
 def main() -> None:
     labels = ["BAGNet", "circuitEvolve"]
     values_ms = [4153, 335]
     colors = [BLUE, GREEN]
 
-    bagnet_ms, evolve_ms = values_ms
-    delta_ms = bagnet_ms - evolve_ms
-    speedup = bagnet_ms / evolve_ms
-    reduction_pct = (delta_ms / bagnet_ms) * 100.0
-
     plt.rcParams.update(
         {"font.family": "sans-serif",
          "font.sans-serif": ["SF Pro Display", "Helvetica Neue", "Arial", "DejaVu Sans"]}
     )
 
-    fig = plt.figure(figsize=(13.6, 8.0), dpi=220, facecolor=BG)
-    ax = fig.add_axes([0.08, 0.16, 0.50, 0.72])
+    fig = plt.figure(figsize=(9.0, 6.5), dpi=220, facecolor=BG)
+    ax = fig.add_axes([0.12, 0.16, 0.80, 0.72])
     ax.set_facecolor(BG)
 
-    bars = ax.bar(labels, values_ms, color=colors, width=0.56, zorder=3)
+    bars = ax.bar(labels, values_ms, color=colors, width=0.46, zorder=3)
 
     for side in ("top", "right"):
         ax.spines[side].set_visible(False)
@@ -53,34 +46,10 @@ def main() -> None:
             transform=ax.transAxes, color=MUTED, fontsize=12.5, ha="left")
 
     for bar, value in zip(bars, values_ms):
-        x = bar.get_x() + bar.get_width()/2
+        x = bar.get_x() + bar.get_width() / 2
         y = bar.get_height()
         ax.text(x, y + 60, f"{value:,} ms", ha="center", va="bottom",
                 fontsize=18, fontweight="bold", color=TEXT)
-
-    # KPI panel
-    panel = fig.add_axes([0.62, 0.15, 0.31, 0.73], facecolor=PANEL)
-    panel.set_xticks([]); panel.set_yticks([])
-    for s in panel.spines.values():
-        s.set_visible(False)
-
-    panel.text(0.08, 0.90, "Empirical summary", color=MUTED, fontsize=14, fontweight="bold")
-    panel.text(0.08, 0.76, f"{speedup:.1f}×", color=ACCENT, fontsize=42, fontweight="bold")
-    panel.text(0.46, 0.78, "faster", color=TEXT, fontsize=18)
-
-    panel.text(0.08, 0.59, f"{reduction_pct:.1f}%", color=ACCENT, fontsize=38, fontweight="bold")
-    panel.text(0.52, 0.61, "less evaluation time", color=TEXT, fontsize=18)
-
-    panel.text(0.08, 0.43, f"{delta_ms:,} ms", color=ACCENT, fontsize=33, fontweight="bold")
-    panel.text(0.08, 0.36, "saved on every candidate evaluation", color=TEXT, fontsize=16)
-
-    panel.text(0.08, 0.20,
-               "Interpretation\n"
-               "At the same compute budget,\n"
-               "circuitEvolve can evaluate\n"
-               "substantially more candidate\n"
-               "circuits than BAGNet.",
-               color=TEXT, fontsize=15, linespacing=1.5)
 
     out_path = Path(__file__).with_suffix(".png")
     fig.savefig(out_path, bbox_inches="tight", facecolor=BG)

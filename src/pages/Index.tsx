@@ -68,13 +68,13 @@ const Index = () => {
               <div className="border-x border-b border-foreground/10 bg-background/60 px-5 pb-5 pt-4 text-sm leading-relaxed text-foreground/90 sm:text-base">
                 <div className="space-y-4">
                   <p>
-                    Analog circuit design remains largely a <span className="underline">manual optimization process</span>. Engineers must iteratively explore circuit topologies, adjust device sizing, and repeatedly validate designs through simulation to meet target specifications. Even with modern design environments, much of this exploration is guided by expert intuition and trial-and-error iteration.
+                    Analog circuit design remains largely a <strong>manual optimization process</strong>. Engineers must iteratively explore circuit topologies, adjust device sizing, and repeatedly validate designs through simulation to meet target specifications. Even with modern design environments, much of this exploration is guided by expert intuition and trial-and-error iteration.
                   </p>
                   <p>
                     As a result, convergence to a valid design can require <span className="underline">thousands of SPICE simulations and significant engineering time</span>. The design space is both large and tightly constrained: topology choices, transistor sizing, bias allocation, and compensation strategies must simultaneously satisfy requirements for stability, power, noise, bandwidth, and robustness across process, voltage, and temperature variations.
                   </p>
                   <p>
-                    <span className="underline">Existing approaches typically address only a portion of this problem.</span> Many tools focus on parameter optimization within a fixed circuit topology, while recent machine learning systems attempt to accelerate sizing for predefined circuit structures. These approaches improve local optimization but do not address the broader challenge of <span className="underline">exploring both circuit topology and device sizing</span> under real analog constraints.
+                    <span className="underline">Existing approaches typically address only a portion of this problem.</span> Many tools focus on parameter optimization within a fixed circuit topology, while recent machine learning systems attempt to accelerate sizing for predefined circuit structures. These approaches improve local optimization but do not address the broader challenge of <strong>exploring both circuit topology and device sizing</strong> under real analog constraints.
                   </p>
                   <p>
                     The core problem is therefore not only faster sizing, but <span className="underline">scalable automation of the full design search process</span>. This includes discovering viable circuit structures, tuning device parameters, and verifying performance through simulation. That is the technical gap circuitEvolve is designed to address.
@@ -296,12 +296,11 @@ const Index = () => {
                           preserved branches can later produce the strongest
                           final design.
                         </p>
-                        <video
-                          controls
+                        <img
+                          src="/animation1.gif"
+                          alt="Evolution of candidate circuit lineages"
                           className="w-full rounded-md border border-foreground/10"
-                        >
-                          <source src="/animation1.mp4" type="video/mp4" />
-                        </video>
+                        />
                       </div>
                       <div className="space-y-2">
                         <p className="text-sm text-foreground/70">
@@ -460,17 +459,9 @@ const Index = () => {
 
       {/* Bottom center: Email */}
       <div className="pb-4 pt-12 text-center">
-        <div className="flex flex-col gap-2">
-          <span className="text-lg font-light tracking-wide text-foreground/80 sm:text-xl md:text-2xl">
-            hello@circuitevolve.com
-          </span>
-          <span className="text-base font-light tracking-wide text-foreground/70 sm:text-lg md:text-xl">
-            ojas@circuitevolve.com
-          </span>
-          <span className="text-base font-light tracking-wide text-foreground/70 sm:text-lg md:text-xl">
-            arnav@circuitevolve.com
-          </span>
-        </div>
+        <span className="text-lg font-light tracking-wide text-foreground/80 sm:text-xl md:text-2xl">
+          hello@circuitevolve.com
+        </span>
       </div>
     </div>
   );

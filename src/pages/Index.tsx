@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Index = () => {
+  const [isProblemOpen, setIsProblemOpen] = useState(false);
   const [isWhatIsOpen, setIsWhatIsOpen] = useState(false);
+  const [isEmpiricalOpen, setIsEmpiricalOpen] = useState(false);
 
   return (
     <div className="relative flex min-h-screen flex-col bg-background px-8 py-10 md:px-16 md:py-12">
@@ -32,6 +34,55 @@ const Index = () => {
           >
             Our Thesis
           </Link>
+
+          {/* What problem are we solving? dropdown */}
+          <div className="w-full">
+            <button
+              type="button"
+              onClick={() => setIsProblemOpen((open) => !open)}
+              className="flex w-full items-center justify-between rounded-2xl border border-foreground/10 bg-background/60 px-6 py-5 text-left shadow-sm transition-colors hover:bg-background/80"
+            >
+              <span className="text-lg font-medium text-foreground sm:text-xl">
+                What problem are we solving?
+              </span>
+              <svg
+                className={`h-5 w-5 text-foreground transition-transform ${
+                  isProblemOpen ? "rotate-180" : ""
+                }`}
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5.5 7.5L10 12L14.5 7.5"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+
+            {isProblemOpen && (
+              <div className="border-x border-b border-foreground/10 bg-background/60 px-5 pb-5 pt-4 text-sm leading-relaxed text-foreground/90 sm:text-base">
+                <div className="space-y-4">
+                  <p>
+                    Analog circuit design remains largely a <span className="underline">manual optimization process</span>. Engineers must iteratively explore circuit topologies, adjust device sizing, and repeatedly validate designs through simulation to meet target specifications. Even with modern design environments, much of this exploration is guided by expert intuition and trial-and-error iteration.
+                  </p>
+                  <p>
+                    As a result, convergence to a valid design can require <span className="underline">thousands of SPICE simulations and significant engineering time</span>. The design space is both large and tightly constrained: topology choices, transistor sizing, bias allocation, and compensation strategies must simultaneously satisfy requirements for stability, power, noise, bandwidth, and robustness across process, voltage, and temperature variations.
+                  </p>
+                  <p>
+                    <span className="underline">Existing approaches typically address only a portion of this problem.</span> Many tools focus on parameter optimization within a fixed circuit topology, while recent machine learning systems attempt to accelerate sizing for predefined circuit structures. These approaches improve local optimization but do not address the broader challenge of <span className="underline">exploring both circuit topology and device sizing</span> under real analog constraints.
+                  </p>
+                  <p>
+                    The core problem is therefore not only faster sizing, but <span className="underline">scalable automation of the full design search process</span>. This includes discovering viable circuit structures, tuning device parameters, and verifying performance through simulation. That is the technical gap circuitEvolve is designed to address.
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
 
           {/* What is circuitEvolve? dropdown */}
           <div className="w-full">
@@ -286,14 +337,140 @@ const Index = () => {
               </div>
             )}
           </div>
+
+          {/* Empirical Evaluation dropdown */}
+          <div className="w-full">
+            <button
+              type="button"
+              onClick={() => setIsEmpiricalOpen((open) => !open)}
+              className="flex w-full items-center justify-between rounded-2xl border border-foreground/10 bg-background/60 px-6 py-5 text-left shadow-sm transition-colors hover:bg-background/80"
+            >
+              <span className="text-lg font-medium text-foreground sm:text-xl">
+                Empirical Evaluation
+              </span>
+              <svg
+                className={`h-5 w-5 text-foreground transition-transform ${
+                  isEmpiricalOpen ? "rotate-180" : ""
+                }`}
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5.5 7.5L10 12L14.5 7.5"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+
+            {isEmpiricalOpen && (
+              <div className="border-x border-b border-foreground/10 bg-background/60 px-5 pb-5 pt-4 text-sm leading-relaxed text-foreground/90 sm:text-base">
+                <div className="space-y-4">
+                  <p>
+                    We evaluate circuitEvolve against prior work along three quantities: peak performance, evaluations required to reach the target threshold, and a normalized search-efficiency score defined as peak performance divided by the number of evaluations required to attain that peak. Together, these quantities capture solution quality, sample efficiency, and optimization effectiveness under a fixed evaluation budget.
+                  </p>
+
+                  {/* Comparison Table */}
+                  <div className="my-6 overflow-x-auto">
+                    <table className="w-full border-collapse text-sm">
+                      <thead>
+                        <tr className="border-b-2 border-foreground/20">
+                          <th className="px-3 py-2 text-left font-semibold">Metric</th>
+                          <th className="px-3 py-2 text-left font-semibold">BAGNet</th>
+                          <th className="px-3 py-2 text-left font-semibold">circuitEvolve</th>
+                          <th className="px-3 py-2 text-left font-semibold">Improvement</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-foreground/10">
+                        <tr>
+                          <td className="px-3 py-2">Peak performance</td>
+                          <td className="px-3 py-2 font-mono">0.70</td>
+                          <td className="px-3 py-2 font-mono">1.00</td>
+                          <td className="px-3 py-2 font-semibold">1.43× higher</td>
+                        </tr>
+                        <tr>
+                          <td className="px-3 py-2">Evaluations to reach target (0.65)</td>
+                          <td className="px-3 py-2 font-mono">589</td>
+                          <td className="px-3 py-2 font-mono">74</td>
+                          <td className="px-3 py-2 font-semibold">7.96× fewer</td>
+                        </tr>
+                        <tr>
+                          <td className="px-3 py-2">Peak performance / evaluations at peak</td>
+                          <td className="px-3 py-2 font-mono">0.70 / 951 = 0.000736</td>
+                          <td className="px-3 py-2 font-mono">1.00 / 200 = 0.005000</td>
+                          <td className="px-3 py-2 font-semibold">6.79× better</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <p>
+                    The comparison shows that circuitEvolve is superior not only in final solution quality, but also in search efficiency. It reaches the target threshold substantially earlier, attains a higher peak performance, and converts each evaluation into useful optimization progress more effectively than BAGNet.
+                  </p>
+
+                  {/* Figure 3: Per-evaluation cost */}
+                  <div className="space-y-3 mt-6">
+                    <h3 className="text-base font-semibold tracking-tight text-foreground">
+                      Per-evaluation runtime
+                    </h3>
+                    <p>
+                      Per-evaluation runtime directly determines the number of circuit evaluations that can be performed within a fixed wall-clock time. Lower evaluation cost allows the optimizer to explore more candidate circuits during the same optimization window.
+                    </p>
+                    <div className="mt-2 flex justify-center">
+                      <img
+                        src="/figure3.png"
+                        alt="Per-evaluation cost comparison"
+                        className="w-full max-w-2xl rounded-md border border-foreground/10"
+                      />
+                    </div>
+                    <p className="text-sm text-foreground/70">
+                      <strong>Figure 3:</strong> Per-evaluation cost. circuitEvolve reduces evaluation time from 4,153 ms to 335 ms, yielding 12.4× faster evaluation and 91.9% less evaluation time relative to BAGNet. This directly increases the practical search budget available under fixed compute.
+                    </p>
+                  </div>
+
+                  {/* Figure 4: Quality vs budget */}
+                  <div className="space-y-3 mt-6">
+                    <h3 className="text-base font-semibold tracking-tight text-foreground">
+                      Solution quality under fixed budget
+                    </h3>
+                    <p>
+                      A more informative measure than raw iteration count is solution quality under a fixed evaluation budget. The following comparison shows that circuitEvolve reaches the target threshold earlier and continues to improve to a stronger final solution, while BAGNet requires substantially more evaluations and saturates at a lower peak performance.
+                    </p>
+                    <div className="mt-2 flex justify-center">
+                      <img
+                        src="/figure4.png"
+                        alt="Optimization quality versus search budget"
+                        className="w-full max-w-2xl rounded-md border border-foreground/10"
+                      />
+                    </div>
+                    <p className="text-sm text-foreground/70">
+                      <strong>Figure 4:</strong> Optimization quality versus search budget. circuitEvolve reaches the target threshold (0.65) in 74 evaluations, whereas BAGNet requires 589 evaluations. circuitEvolve also reaches a higher peak performance (1.00) than BAGNet (0.70), indicating superior sample efficiency and stronger final optimization quality.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Bottom center: Email */}
-      <div className="pb-4 text-center">
-        <span className="text-lg font-light tracking-wide text-foreground/80 sm:text-xl md:text-2xl">
-          hello@circuitevolve.com
-        </span>
+      <div className="pb-4 pt-12 text-center">
+        <div className="flex flex-col gap-2">
+          <span className="text-lg font-light tracking-wide text-foreground/80 sm:text-xl md:text-2xl">
+            hello@circuitevolve.com
+          </span>
+          <span className="text-base font-light tracking-wide text-foreground/70 sm:text-lg md:text-xl">
+            ojas@circuitevolve.com
+          </span>
+          <span className="text-base font-light tracking-wide text-foreground/70 sm:text-lg md:text-xl">
+            arnav@circuitevolve.com
+          </span>
+        </div>
       </div>
     </div>
   );

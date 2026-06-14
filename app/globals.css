@@ -2615,6 +2615,16 @@ button {
   gap: 18px;
 }
 
+.df-error {
+  margin: 0;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #b00020;
+  background: rgba(176, 0, 32, 0.08);
+  border: 1px solid rgba(176, 0, 32, 0.2);
+  border-radius: 8px;
+}
+
 .df-row {
   display: grid;
   grid-template-columns: 1fr 1fr;

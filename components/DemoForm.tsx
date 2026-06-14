@@ -4,6 +4,8 @@ import { FormEvent, useState } from "react";
 
 type Status = "idle" | "processing" | "confirmed";
 
+const WEB3FORMS_ACCESS_KEY = "387cddfd-17a1-43b1-a09b-44f545256388";
+
 const purposes = [
   "Analog circuit design",
   "RTL optimization",
@@ -14,26 +16,52 @@ const purposes = [
 
 export default function DemoForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const [error, setError] = useState("");
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (status === "processing") return;
     setStatus("processing");
+    setError("");
 
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form));
+    const firstName = String(data.first_name ?? "");
+    const lastName = String(data.last_name ?? "");
+    const email = String(data.email ?? "");
+    const company = String(data.company ?? "");
 
-    const res = await fetch("/api/demo", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: `${firstName} ${lastName}`,
+          email,
+          company,
+          job_title: String(data.job_title ?? ""),
+          purpose: String(data.purpose ?? ""),
+          message: String(data.info ?? ""),
+          subject: `Demo Request from ${firstName} ${lastName} - ${company}`,
+        }),
+      });
 
-    if (res.ok) {
-      setStatus("confirmed");
-    } else {
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus("confirmed");
+      } else {
+        setStatus("idle");
+        setError("Something went wrong. Please email us directly at hello@circuitevolve.com");
+      }
+    } catch (err) {
       setStatus("idle");
-      alert("Something went wrong — please try again or email us directly.");
+      setError("Something went wrong. Please email us directly at hello@circuitevolve.com");
+      console.error("Form submission error:", err);
     }
   }
 
@@ -50,6 +78,8 @@ export default function DemoForm() {
 
   return (
     <form className="df-form" onSubmit={handleSubmit}>
+      {error && <p className="df-error">{error}</p>}
+
       <div className="df-row">
         <div className="df-field">
           <label className="df-label" htmlFor="df-first">
@@ -114,8 +144,6 @@ export default function DemoForm() {
       <button type="submit" className="df-submit" disabled={status === "processing"}>
         {status === "processing" ? "Submitting…" : "Request Demo"}
       </button>
-
-
     </form>
   );
 }

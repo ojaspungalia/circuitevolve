@@ -37,7 +37,7 @@ export default function Home() {
 
           <div className="hero-cta-row">
             <a href="/thesis" className="thesis-cta-btn hero-thesis-btn">Our Thesis</a>
-            <DemoScrollButton className="thesis-cta-btn hero-thesis-btn hero-demo-btn" />
+            <DemoScrollButton className="hero-demo-link" />
           </div>
         </div>
       </section>

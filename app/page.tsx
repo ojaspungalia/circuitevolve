@@ -1,6 +1,7 @@
 import VideoWindow from "@/components/VideoWindow";
 import ScrollReveal from "@/components/ScrollReveal";
 import DemoForm from "@/components/DemoForm";
+import DemoScrollButton from "@/components/DemoScrollButton";
 import type { CSSProperties } from "react";
 
 const brandLetters = "circuitEvolve".split("");
@@ -34,7 +35,10 @@ export default function Home() {
 
           <p className="hero-tagline">Design. Iterate. Converge.</p>
 
-          <a href="/thesis" className="thesis-cta-btn hero-thesis-btn">Our Thesis</a>
+          <div className="hero-cta-row">
+            <a href="/thesis" className="thesis-cta-btn hero-thesis-btn">Our Thesis</a>
+            <DemoScrollButton className="thesis-cta-btn hero-thesis-btn hero-demo-btn" />
+          </div>
         </div>
       </section>
 

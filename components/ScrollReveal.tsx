@@ -4,6 +4,24 @@ import { useEffect } from "react";
 
 export default function ScrollReveal() {
   useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    if (window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    };
+
+    scrollToTop();
+    requestAnimationFrame(scrollToTop);
+    window.setTimeout(scrollToTop, 0);
+  }, []);
+
+  useEffect(() => {
     const targets = document.querySelectorAll<HTMLElement>("[data-reveal]");
 
     if (targets.length === 0) {

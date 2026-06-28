@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, type CSSProperties } from "react";
 
 type Status = "idle" | "processing" | "confirmed";
 
@@ -141,9 +141,11 @@ export default function DemoForm() {
         />
       </div>
 
-      <button type="submit" className="df-submit" disabled={status === "processing"}>
-        {status === "processing" ? "Submitting…" : "Request Demo"}
-      </button>
+      <div data-reveal style={{ "--reveal-delay": "200ms" } as CSSProperties}>
+        <button type="submit" className="df-submit" disabled={status === "processing"}>
+          {status === "processing" ? "Submitting…" : "Request Demo"}
+        </button>
+      </div>
     </form>
   );
 }

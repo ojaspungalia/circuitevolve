@@ -2,6 +2,7 @@ import VideoWindow from "@/components/VideoWindow";
 import ScrollReveal from "@/components/ScrollReveal";
 import DemoForm from "@/components/DemoForm";
 import DemoScrollButton from "@/components/DemoScrollButton";
+import OptimizerPoints from "@/components/OptimizerPoints";
 import type { CSSProperties } from "react";
 
 const brandLetters = "circuitEvolve".split("");
@@ -47,6 +48,11 @@ export default function Home() {
         <div className="section-inner video-window-wrap">
           <VideoWindow />
         </div>
+      </section>
+
+      {/* ── Optimizer Points ────────────────────────────────────────────── */}
+      <section className="section theme-light">
+        <OptimizerPoints />
       </section>
 
       {/* ── Request a Demo ───────────────────────────────────────────────── */}

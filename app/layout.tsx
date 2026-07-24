@@ -17,7 +17,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CircuitEvolve | Repository-Scale RTL Evolution",
+  title: "CircuitEvolve",
   description:
     "A monochromatic technical interface for CircuitEvolve: LLM-guided RTL mutation, closed-loop EDA verification, and PPA-benchmarked hardware architecture reconstruction.",
   applicationName: "circuitEvolve",

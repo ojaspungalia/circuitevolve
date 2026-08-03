@@ -1448,6 +1448,7 @@ button {
   align-items: center;
   gap: clamp(14px, 2vw, 24px);
   text-align: center;
+  transform: translateY(clamp(-70px, -10vh, -30px));
 }
 
 .hero-center-logo-bare {

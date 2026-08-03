@@ -54,16 +54,17 @@ export default function Home() {
 
           <div className="video-window-copy">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
+              circuitEvolve is building an AI-powered platform that automates
+              the analog circuit design process, from an initial
+              specification and selected topology to a design ready for
+              layout. By intelligently iterating circuit parameters through
+              simulation, the platform helps engineers achieve target
+              specifications significantly faster while working within their
+              existing workflows. circuitEvolve is training-free,
+              simulator-agnostic, and PDK-agnostic, enabling it to adapt
+              across technologies, tools, and circuit types without requiring
+              proprietary datasets or changes to established design
+              environments.
             </p>
           </div>
         </div>

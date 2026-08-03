@@ -1442,6 +1442,47 @@ button {
   padding-bottom: 0;
 }
 
+.scroll-down-arrow {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(28px, 6vh, 56px);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: #060606;
+  cursor: pointer;
+  animation: scrollArrowPulse 2.2s ease-in-out infinite;
+  transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1), color 220ms;
+}
+
+.scroll-down-arrow:hover {
+  animation-play-state: paused;
+  transform: translateX(-50%) translateY(4px);
+  color: #222;
+}
+
+.scroll-down-arrow svg {
+  display: block;
+}
+
+@keyframes scrollArrowPulse {
+  0%, 100% {
+    opacity: 0.45;
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+
 .hero-centered-inner {
   display: flex;
   flex-direction: column;

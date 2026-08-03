@@ -2,6 +2,7 @@ import VideoWindow from "@/components/VideoWindow";
 import ScrollReveal from "@/components/ScrollReveal";
 import DemoForm from "@/components/DemoForm";
 import DemoScrollButton from "@/components/DemoScrollButton";
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 import OptimizerPoints from "@/components/OptimizerPoints";
 import OptimStats from "@/components/OptimStats";
 import type { CSSProperties } from "react";
@@ -42,10 +43,12 @@ export default function Home() {
             <DemoScrollButton className="hero-demo-link" />
           </div>
         </div>
+
+        <ScrollDownArrow targetId="video-window" />
       </section>
 
       {/* ── Video window ─────────────────────────────────────────────────── */}
-      <section className="section theme-light video-window-section">
+      <section className="section theme-light video-window-section" id="video-window">
         <div className="section-inner video-window-wrap">
           <VideoWindow />
         </div>

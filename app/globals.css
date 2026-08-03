@@ -1876,6 +1876,18 @@ button {
 
 /* ── Optim stats ──────────────────────────────────────── */
 
+@property --optim-pad {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 24px;
+}
+
+@property --optim-inner-gap {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 16px;
+}
+
 .optim-head {
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
@@ -1901,6 +1913,8 @@ button {
 }
 
 .optim-grid {
+  container-type: inline-size;
+  container-name: optim-grid;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: end;
@@ -1910,28 +1924,48 @@ button {
 }
 
 .optim-card {
+  --optim-pad: clamp(16px, 3.8cqi + 0.35rem, 32px);
+  --optim-inner-gap: clamp(12px, 1.8cqi + 0.25rem, 18px);
+  --optim-pad-scale: 1;
   position: relative;
   display: flex;
   flex-direction: column;
+  container-type: inline-size;
   border-right: 1px solid var(--hairline);
   border-bottom: 1px solid var(--hairline);
-  padding: clamp(24px, 2.4vw, 32px);
+  padding: calc(var(--optim-pad) * var(--optim-pad-scale));
   transition:
+    --optim-pad 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    --optim-inner-gap 520ms cubic-bezier(0.22, 1, 0.36, 1),
     background 520ms cubic-bezier(0.22, 1, 0.36, 1),
     transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .optim-card:hover {
+  --optim-pad: clamp(22px, 5.4cqi + 0.5rem, 44px);
+  --optim-inner-gap: clamp(14px, 2.4cqi + 0.35rem, 24px);
   background: rgba(0, 0, 0, 0.03);
   transform: translateY(-5px);
   box-shadow: 0 26px 54px rgba(0, 0, 0, 0.09);
 }
 
-.optim-card:nth-child(1) { min-height: clamp(272px, 29vw, 322px); }
-.optim-card:nth-child(2) { min-height: clamp(312px, 32.5vw, 366px); }
-.optim-card:nth-child(3) { min-height: clamp(352px, 36vw, 410px); }
-.optim-card:nth-child(4) { min-height: clamp(392px, 39.5vw, 454px); }
+.optim-card:nth-child(1) {
+  --optim-pad-scale: 1;
+  min-height: clamp(272px, 29vw, 322px);
+}
+.optim-card:nth-child(2) {
+  --optim-pad-scale: 1.06;
+  min-height: clamp(312px, 32.5vw, 366px);
+}
+.optim-card:nth-child(3) {
+  --optim-pad-scale: 1.12;
+  min-height: clamp(352px, 36vw, 410px);
+}
+.optim-card:nth-child(4) {
+  --optim-pad-scale: 1.18;
+  min-height: clamp(392px, 39.5vw, 454px);
+}
 
 .optim-card-index {
   color: var(--dim);
@@ -1945,8 +1979,9 @@ button {
 .optim-card-top {
   display: flex;
   align-items: baseline;
-  gap: 8px;
-  margin-top: 14px;
+  gap: clamp(6px, 1.2cqi, 10px);
+  margin-top: calc(var(--optim-pad) * 0.42 * var(--optim-pad-scale));
+  transition: margin-top 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .optim-card-value {
@@ -1966,32 +2001,40 @@ button {
 .optim-card-body {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--optim-inner-gap);
   margin-top: auto;
-  padding-top: 28px;
+  padding-top: calc(var(--optim-pad) * 0.78 * var(--optim-pad-scale));
+  transition: padding-top 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .optim-card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
+  width: clamp(44px, 9cqi, 56px);
+  height: clamp(44px, 9cqi, 56px);
   border: 1px solid var(--hairline-strong);
   border-radius: 50%;
   color: var(--ink);
-  transition: border-color 420ms ease, background 420ms ease;
+  transition:
+    width 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 420ms ease,
+    background 420ms ease;
 }
 
 .optim-card:hover .optim-card-icon {
+  width: clamp(48px, 10cqi, 60px);
+  height: clamp(48px, 10cqi, 60px);
   border-color: var(--ink);
   background: var(--ink);
   color: var(--paper);
 }
 
 .optim-card-icon svg {
-  width: 22px;
-  height: 22px;
+  width: clamp(18px, 4.2cqi, 24px);
+  height: clamp(18px, 4.2cqi, 24px);
+  transition: width 520ms cubic-bezier(0.22, 1, 0.36, 1), height 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .optim-card-title {
@@ -2026,6 +2069,7 @@ button {
   .optim-card:nth-child(2),
   .optim-card:nth-child(3),
   .optim-card:nth-child(4) {
+    --optim-pad-scale: 1;
     min-height: 320px;
   }
 

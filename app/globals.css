@@ -1593,6 +1593,7 @@ button {
   min-height: auto;
   padding-top: clamp(72px, 10vh, 120px);
   padding-bottom: clamp(72px, 10vh, 120px);
+  padding-left: clamp(12px, 3vw, 48px);
 }
 
 .video-window-wrap {
@@ -1600,17 +1601,22 @@ button {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  gap: clamp(48px, 8vw, 84px);
+  gap: clamp(24px, 4vw, 48px);
 }
 
 .video-window-copy {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
-  max-width: 360px;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.65;
+  flex: 1;
+  max-width: 440px;
+  color: var(--ink);
+  font-size: clamp(19px, 1.7vw, 23px);
+  font-weight: 600;
+  line-height: 1.55;
+  text-align: center;
 }
 
 @media (max-width: 900px) {

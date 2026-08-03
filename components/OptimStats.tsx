@@ -83,17 +83,19 @@ export default function OptimStats() {
               data-reveal
               style={{ "--reveal-delay": `${index * 90}ms` } as CSSProperties}
             >
-              <span className="optim-card-index">{stat.index}</span>
+              <div className="optim-card-surface">
+                <span className="optim-card-index">{stat.index}</span>
 
-              <div className="optim-card-top">
-                <span className="optim-card-value">{stat.value}</span>
-                <span className="optim-card-unit">{stat.unit}</span>
-              </div>
+                <div className="optim-card-top">
+                  <span className="optim-card-value">{stat.value}</span>
+                  <span className="optim-card-unit">{stat.unit}</span>
+                </div>
 
-              <div className="optim-card-body">
-                <span className="optim-card-icon">{stat.icon}</span>
-                <div className="optim-card-title">{stat.title}</div>
-                <p className="optim-card-desc">{stat.desc}</p>
+                <div className="optim-card-body">
+                  <span className="optim-card-icon">{stat.icon}</span>
+                  <div className="optim-card-title">{stat.title}</div>
+                  <p className="optim-card-desc">{stat.desc}</p>
+                </div>
               </div>
             </div>
           ))}

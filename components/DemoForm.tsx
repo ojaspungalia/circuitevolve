@@ -8,7 +8,6 @@ const WEB3FORMS_ACCESS_KEY = "387cddfd-17a1-43b1-a09b-44f545256388";
 
 const purposes = [
   "Analog circuit design",
-  "RTL optimization",
   "EDA workflow automation",
   "Research / Academia",
   "Other",

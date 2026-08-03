@@ -3,6 +3,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import DemoForm from "@/components/DemoForm";
 import DemoScrollButton from "@/components/DemoScrollButton";
 import OptimizerPoints from "@/components/OptimizerPoints";
+import OptimStats from "@/components/OptimStats";
 import type { CSSProperties } from "react";
 
 const brandLetters = "circuitEvolve".split("");
@@ -50,8 +51,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Optim Stats ──────────────────────────────────────────────────── */}
+      <OptimStats />
+
       {/* ── Optimizer Points ────────────────────────────────────────────── */}
-      <section className="section theme-light">
+      <section className="section theme-light optimizer-section">
         <OptimizerPoints />
       </section>
 

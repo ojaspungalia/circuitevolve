@@ -1625,6 +1625,10 @@ button {
   gap: 10px;
 }
 
+.vw-copy-para.is-visible {
+  clip-path: none;
+}
+
 .vw-copy-index {
   font-family: var(--font-mono), monospace;
   font-size: 11px;
@@ -1687,7 +1691,7 @@ button {
   background-size: 100% 1px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1300px) {
   .video-window-wrap {
     flex-direction: column;
     align-items: center;
@@ -1701,6 +1705,7 @@ button {
 
   .vw-copy-para {
     align-items: center;
+    max-width: min(560px, 86%);
   }
 
   .vw-copy-text {

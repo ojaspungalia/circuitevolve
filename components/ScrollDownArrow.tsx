@@ -17,7 +17,7 @@ export default function ScrollDownArrow({ targetId, className }: ScrollDownArrow
       aria-label="Scroll to video"
       onClick={handleClick}
     >
-      <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="36" height="22" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 1L10 10L19 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </button>

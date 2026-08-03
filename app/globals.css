@@ -1918,6 +1918,8 @@ button {
 .fa-thermometer::before { content: "◉"; }
 .fa-bolt::before { content: "⚡"; }
 .fa-chart-line::before { content: "↗"; }
+.fa-shuffle::before { content: "⇄"; }
+.fa-ban::before { content: "⊘"; }
 
 /* ── Optimizer Points section ─────────────────────────── */
 

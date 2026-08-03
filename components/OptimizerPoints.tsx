@@ -8,17 +8,17 @@ const points = [
   },
   {
     id: "pvt",
-    iconClass: "fa-solid fa-thermometer",
+    iconClass: "fa-solid fa-shuffle",
     colorClass: "op-icon-blue",
-    title: "Multi-corner verification",
-    desc: "Process, voltage, temperature checks.",
+    title: "PDK & simulator agnostic",
+    desc: "Works across any PDK, tool, or simulator.",
   },
   {
     id: "ppa",
-    iconClass: "fa-solid fa-bolt",
+    iconClass: "fa-solid fa-ban",
     colorClass: "op-icon-amber",
-    title: "Improve metrics",
-    desc: "Automated trade-offs to hit targets.",
+    title: "Training-free",
+    desc: "No proprietary datasets or pretraining required.",
   },
   {
     id: "yield",

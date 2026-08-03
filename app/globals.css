@@ -1612,6 +1612,7 @@ button {
   gap: 24px;
   flex: 1;
   max-width: 560px;
+  padding-left: clamp(16px, 3vw, 40px);
   color: var(--ink);
   font-size: clamp(16px, 1.35vw, 19px);
   font-weight: 500;
@@ -1627,6 +1628,7 @@ button {
 
   .video-window-copy {
     max-width: 100%;
+    padding-left: 0;
     align-items: center;
     text-align: center;
   }

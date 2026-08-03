@@ -1590,7 +1590,9 @@ button {
 ══════════════════════════════════════════════════════════════ */
 
 .video-window-section {
-  min-height: auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
   padding-top: clamp(72px, 10vh, 120px);
   padding-bottom: clamp(72px, 10vh, 120px);
   padding-left: clamp(12px, 3vw, 48px);

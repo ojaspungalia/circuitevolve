@@ -1919,8 +1919,6 @@ button {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: end;
   gap: 0;
-  border-top: 1px solid var(--hairline);
-  border-left: 1px solid var(--hairline);
 }
 
 .optim-card {
@@ -1931,6 +1929,7 @@ button {
   display: flex;
   flex-direction: column;
   container-type: inline-size;
+  border-top: 1px solid var(--hairline);
   border-right: 1px solid var(--hairline);
   border-bottom: 1px solid var(--hairline);
   padding: calc(var(--optim-pad) * var(--optim-pad-scale));
@@ -1953,6 +1952,7 @@ button {
 .optim-card:nth-child(1) {
   --optim-pad-scale: 1;
   min-height: clamp(272px, 29vw, 322px);
+  border-left: 1px solid var(--hairline);
 }
 .optim-card:nth-child(2) {
   --optim-pad-scale: 1.06;

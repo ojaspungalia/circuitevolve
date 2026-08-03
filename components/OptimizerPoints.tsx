@@ -10,7 +10,7 @@ const points = [
     id: "pvt",
     iconClass: "fa-solid fa-shuffle",
     colorClass: "op-icon-blue",
-    title: "PDK & simulator agnostic",
+    title: "Tool-agnostic",
     desc: "Works across any PDK, tool, or simulator.",
   },
   {

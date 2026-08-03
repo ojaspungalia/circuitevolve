@@ -2056,15 +2056,16 @@ button {
 
 .optim-heading {
   font-size: clamp(56px, 8.4vw, 128px);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.055em;
   line-height: 0.88;
+  margin-left: clamp(12px, 3vw, 40px);
 }
 
 .optim-sub {
   max-width: 560px;
-  color: var(--muted);
-  font-size: clamp(15px, 1.4vw, 18px);
+  color: var(--ink);
+  font-size: clamp(17px, 1.6vw, 20px);
   font-weight: 300;
   letter-spacing: -0.015em;
   line-height: 1.65;

@@ -48,7 +48,7 @@ const stats = [
   {
     id: "cost",
     index: "04",
-    value: "40%",
+    value: "60%",
     unit: "cost saved",
     title: "Lower design cost",
     desc: "Cuts design-cycle cost by 40% versus manual and legacy flows.",

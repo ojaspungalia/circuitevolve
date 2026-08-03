@@ -1591,16 +1591,38 @@ button {
 
 .video-window-section {
   min-height: auto;
-  padding-top: 0;
+  padding-top: clamp(72px, 10vh, 120px);
   padding-bottom: clamp(72px, 10vh, 120px);
 }
 
 .video-window-wrap {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: clamp(48px, 8vw, 84px);
+}
+
+.video-window-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 360px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .video-window-wrap {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .video-window-copy {
+    max-width: 100%;
+    text-align: center;
+  }
 }
 
 .vw-shell {

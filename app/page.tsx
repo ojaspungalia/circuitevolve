@@ -60,11 +60,13 @@ export default function Home() {
               layout. By intelligently iterating circuit parameters through
               simulation, the platform helps engineers achieve target
               specifications significantly faster while working within their
-              existing workflows. circuitEvolve is training-free,
-              simulator-agnostic, and PDK-agnostic, enabling it to adapt
-              across technologies, tools, and circuit types without requiring
-              proprietary datasets or changes to established design
-              environments.
+              existing workflows.
+            </p>
+            <p>
+              circuitEvolve is training-free, simulator-agnostic, and
+              PDK-agnostic, enabling it to adapt across technologies, tools,
+              and circuit types without requiring proprietary datasets or
+              changes to established design environments.
             </p>
           </div>
         </div>

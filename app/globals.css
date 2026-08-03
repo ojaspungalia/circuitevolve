@@ -1608,15 +1608,15 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 20px;
+  align-items: flex-start;
+  gap: 24px;
   flex: 1;
-  max-width: 440px;
+  max-width: 560px;
   color: var(--ink);
-  font-size: clamp(19px, 1.7vw, 23px);
-  font-weight: 600;
-  line-height: 1.55;
-  text-align: center;
+  font-size: clamp(16px, 1.35vw, 19px);
+  font-weight: 500;
+  line-height: 1.7;
+  text-align: left;
 }
 
 @media (max-width: 900px) {
@@ -1627,6 +1627,7 @@ button {
 
   .video-window-copy {
     max-width: 100%;
+    align-items: center;
     text-align: center;
   }
 }

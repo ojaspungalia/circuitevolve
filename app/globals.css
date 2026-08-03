@@ -1611,12 +1611,12 @@ button {
   align-items: flex-start;
   gap: 34px;
   flex: 1;
-  max-width: 560px;
+  max-width: 620px;
   padding-left: clamp(32px, 7vw, 88px);
   color: rgba(6, 6, 6, 0.68);
-  font-size: clamp(16px, 1.35vw, 19px);
+  font-size: clamp(19px, 1.7vw, 23px);
   font-weight: 500;
-  line-height: 1.8;
+  line-height: 1.75;
 }
 
 .vw-copy-para {

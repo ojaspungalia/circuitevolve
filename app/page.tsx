@@ -54,7 +54,7 @@ export default function Home() {
 
           <div className="video-window-copy">
             <p className="vw-copy-para" data-reveal>
-              <span className="vw-copy-index">Platform</span>
+              <span className="vw-copy-index">What we do?</span>
               <span className="vw-copy-text">
                 circuitEvolve is building an <strong>AI-powered platform</strong>{" "}
                 that accelerates <strong>analog circuit design</strong>, from an
@@ -63,21 +63,6 @@ export default function Home() {
                 parameters through simulation, it helps engineers reach{" "}
                 <strong>target specifications</strong> significantly faster,
                 without disrupting their existing workflows.
-              </span>
-            </p>
-            <p
-              className="vw-copy-para"
-              data-reveal
-              style={{ "--reveal-delay": "160ms" } as CSSProperties}
-            >
-              <span className="vw-copy-index">Compatibility</span>
-              <span className="vw-copy-text">
-                The platform is <strong>training-free</strong>,{" "}
-                <strong>simulator-agnostic</strong>, and{" "}
-                <strong>PDK-agnostic</strong>, adapting seamlessly across
-                technologies, tools, and circuit types, with no proprietary
-                datasets or changes to established design environments
-                required.
               </span>
             </p>
           </div>

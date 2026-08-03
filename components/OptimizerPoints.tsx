@@ -11,7 +11,7 @@ const points = [
     iconClass: "fa-solid fa-shuffle",
     colorClass: "op-icon-blue",
     title: "Tool-agnostic",
-    desc: "Works across any PDK, tool, or simulator.",
+    desc: "Works across any PDK or simulator.",
   },
   {
     id: "ppa",

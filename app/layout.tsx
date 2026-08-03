@@ -19,12 +19,12 @@ const jetBrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "circuitEvolve",
   description:
-    "A monochromatic technical interface for CircuitEvolve: LLM-guided RTL mutation, closed-loop EDA verification, and PPA-benchmarked hardware architecture reconstruction.",
+    "A monochromatic technical interface for CircuitEvolve: LLM-guided circuit mutation, closed-loop EDA verification, and PPA-benchmarked hardware architecture reconstruction.",
   applicationName: "circuitEvolve",
   authors: [{ name: "circuitEvolve" }],
   keywords: [
     "circuitEvolve",
-    "RTL evolution",
+    "circuit evolution",
     "EDA",
     "Yosys",
     "OpenROAD",

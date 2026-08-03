@@ -69,7 +69,7 @@ export default function DemoForm() {
       <div className="df-confirmed">
         <p className="df-confirmed-title">Request received.</p>
         <p className="df-confirmed-body">
-          Thanks — our team will be in touch shortly at the email you provided.
+          Thanks, our team will be in touch shortly at the email you provided.
         </p>
       </div>
     );

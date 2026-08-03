@@ -128,27 +128,27 @@ function ProblemContent() {
 function WhatContent() {
   const steps: [string, string][] = [
     [
-      "Step 1 — Design Specifications and Baseline Circuit",
+      "Step 1: Design Specifications and Baseline Circuit",
       "The system begins with a problem specification and an initial circuit design. The starting design may be a baseline design schematic or a parameterized circuit template. In addition to the circuit description, the system receives a set of design rules and constraints that define the allowable device types, node naming conventions, and bias source interfaces used within the design environment.",
     ],
     [
-      "Step 2 — LLM-Guided Circuit Edits",
+      "Step 2: LLM-Guided Circuit Edits",
       "A large language model proposes candidate modifications to the circuit. These modifications can include adjustments to device parameters as well as structural edits such as inserting additional devices, modifying current paths, or altering bias configurations. To maintain robustness, the model output is restricted to a structured format that limits changes to predefined editable sections of the design schematic.",
     ],
     [
-      "Step 3 — Harness Rebuild",
+      "Step 3: Harness Rebuild",
       "The system extracts the editable portion of the proposal and integrates it into a standardized simulation harness. The harness reconstructs the complete design schematic including supplies, loads, device models, stimuli, and measurement directives. This ensures that every candidate design is evaluated within an identical simulation environment.",
     ],
     [
-      "Step 4 — Simulation-Based Evaluation",
+      "Step 4: Simulation-Based Evaluation",
       "Each candidate circuit is evaluated using a circuit simulator such as ngspice, Spectre, or HSPICE. The simulator computes the required performance metrics, including gain, bandwidth, noise, power consumption, and stability. These metrics provide the ground-truth assessment of circuit behavior.",
     ],
     [
-      "Step 5 — Fitness Evaluation",
+      "Step 5: Fitness Evaluation",
       "Simulation results are converted into a fitness score representing how well the candidate design satisfies the target specifications. Designs that violate critical constraints receive penalties, while designs that improve key performance metrics are assigned higher scores.",
     ],
     [
-      "Step 6 — Evolutionary Selection",
+      "Step 6: Evolutionary Selection",
       "The system stores each evaluated candidate along with its performance metrics. An evolutionary selection process chooses high-performing circuits to act as parents for the next generation. The selection process also preserves diversity across candidate circuits to prevent premature convergence to local optima. This loop continues until the system converges to a design that satisfies the target specifications or until a predefined search budget is exhausted.",
     ],
   ];

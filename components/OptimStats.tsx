@@ -69,8 +69,8 @@ export default function OptimStats() {
             OPTIM
           </h2>
           <p className="optim-sub" data-reveal style={{ "--reveal-delay": "90ms" } as CSSProperties}>
-            OPTIM is circuitEvolve&apos;s core optimization engine — the closed loop that
-            mutates, verifies, and converges RTL and analog designs automatically, benchmarked
+            OPTIM is circuitEvolve&apos;s core optimization engine, the closed loop that
+            mutates, verifies, and converges analog designs automatically, benchmarked
             against real device libraries and existing ML-driven flows.
           </p>
         </div>

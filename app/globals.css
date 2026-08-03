@@ -732,7 +732,7 @@ button {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   THESIS PAGE  (/thesis)  — matches main site light theme
+   THESIS PAGE  (/thesis) - matches main site light theme
 ══════════════════════════════════════════════════════════════ */
 
 .tp-root {
@@ -742,7 +742,7 @@ button {
   font-family: var(--font-sans), sans-serif;
 }
 
-/* Nav — identical to .site-header */
+/* Nav - identical to .site-header */
 .tp-nav {
   position: fixed;
   top: 0;
@@ -833,7 +833,7 @@ button {
   margin-bottom: 44px;
 }
 
-/* Orbital rings — ink toned */
+/* Orbital rings - ink toned */
 .tp-ring {
   position: absolute;
   border-radius: 50%;
@@ -868,7 +868,7 @@ button {
   to   { transform: rotate(360deg); }
 }
 
-/* Glow disc — subtle ink shadow */
+/* Glow disc - subtle ink shadow */
 .tp-glow {
   position: absolute;
   width: 110px;
@@ -2800,7 +2800,7 @@ button {
   margin-right: auto;
 }
 
-/* Landscape charts — cap height so they don't dominate */
+/* Landscape charts - cap height so they don't dominate */
 .thesis-figure-img--chart {
   max-height: 380px;
   width: 100%;
@@ -2935,7 +2935,7 @@ button {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   DEMO SECTION — full-width 16:9 card (homepage)
+   DEMO SECTION - full-width 16:9 card (homepage)
 ══════════════════════════════════════════════════════════════ */
 
 .demo-section {

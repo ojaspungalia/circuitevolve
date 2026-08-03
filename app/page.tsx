@@ -55,20 +55,20 @@ export default function Home() {
           <div className="video-window-copy">
             <p>
               circuitEvolve is building an <strong>AI-powered platform</strong> that
-              automates the <strong>analog circuit design process</strong>, from an
-              initial specification and selected topology to a design ready
-              for layout. By intelligently iterating circuit parameters
-              through simulation, the platform helps engineers achieve{" "}
-              <strong>target specifications</strong> significantly faster while
-              working within their existing workflows.
+              automates <strong>analog circuit design</strong>, from an initial
+              specification and selected topology all the way to a
+              layout-ready result. By intelligently iterating circuit
+              parameters through simulation, it helps engineers reach{" "}
+              <strong>target specifications</strong> significantly faster,
+              without disrupting their existing workflows.
             </p>
             <p>
-              circuitEvolve is <strong>training-free</strong>,{" "}
+              The platform is <strong>training-free</strong>,{" "}
               <strong>simulator-agnostic</strong>, and{" "}
-              <strong>PDK-agnostic</strong>, enabling it to adapt across
-              technologies, tools, and circuit types without requiring
-              proprietary datasets or changes to established design
-              environments.
+              <strong>PDK-agnostic</strong>, adapting seamlessly across
+              technologies, tools, and circuit types, with no proprietary
+              datasets or changes to established design environments
+              required.
             </p>
           </div>
         </div>

@@ -1613,10 +1613,10 @@ button {
   flex: 1;
   max-width: 560px;
   padding-left: clamp(32px, 7vw, 88px);
-  color: var(--ink);
+  color: rgba(6, 6, 6, 0.68);
   font-size: clamp(16px, 1.35vw, 19px);
   font-weight: 500;
-  line-height: 1.75;
+  line-height: 1.8;
   text-align: justify;
   text-justify: inter-word;
 }
@@ -1636,12 +1636,15 @@ button {
 }
 
 .video-window-copy strong {
+  color: var(--ink);
   font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.015em;
   background-image: linear-gradient(currentColor, currentColor);
   background-size: 0% 1px;
   background-repeat: no-repeat;
   background-position: 0 100%;
-  transition: background-size 420ms ease;
+  transition: background-size 420ms ease, color 320ms ease;
 }
 
 .video-window-copy p:hover strong {

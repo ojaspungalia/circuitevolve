@@ -1924,47 +1924,42 @@ button {
 }
 
 .optim-card {
-  --optim-pad: clamp(16px, 3.8cqi + 0.35rem, 32px);
-  --optim-inner-gap: clamp(12px, 1.8cqi + 0.25rem, 18px);
-  --optim-pad-scale: 1;
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   container-type: inline-size;
   border-right: 1px solid var(--hairline);
   border-bottom: 1px solid var(--hairline);
-  padding: calc(var(--optim-pad) * var(--optim-pad-scale));
+  padding: 0;
+}
+
+.optim-card:nth-child(1) { min-height: clamp(272px, 29vw, 322px); }
+.optim-card:nth-child(2) { min-height: clamp(312px, 32.5vw, 366px); }
+.optim-card:nth-child(3) { min-height: clamp(352px, 36vw, 410px); }
+.optim-card:nth-child(4) { min-height: clamp(392px, 39.5vw, 454px); }
+
+.optim-card-surface {
+  --optim-pad: clamp(14px, 3.2cqi, 24px);
+  --optim-inner-gap: clamp(10px, 1.6cqi, 16px);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--optim-pad);
   transition:
-    --optim-pad 520ms cubic-bezier(0.22, 1, 0.36, 1),
-    --optim-inner-gap 520ms cubic-bezier(0.22, 1, 0.36, 1),
-    background 520ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 520ms cubic-bezier(0.22, 1, 0.36, 1);
+    --optim-pad 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    --optim-inner-gap 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.optim-card:hover {
-  --optim-pad: clamp(22px, 5.4cqi + 0.5rem, 44px);
-  --optim-inner-gap: clamp(14px, 2.4cqi + 0.35rem, 24px);
+.optim-card:hover .optim-card-surface {
+  --optim-pad: clamp(18px, 4.4cqi, 32px);
+  --optim-inner-gap: clamp(12px, 2cqi, 20px);
   background: rgba(0, 0, 0, 0.03);
-  transform: translateY(-5px);
-  box-shadow: 0 26px 54px rgba(0, 0, 0, 0.09);
-}
-
-.optim-card:nth-child(1) {
-  --optim-pad-scale: 1;
-  min-height: clamp(272px, 29vw, 322px);
-}
-.optim-card:nth-child(2) {
-  --optim-pad-scale: 1.06;
-  min-height: clamp(312px, 32.5vw, 366px);
-}
-.optim-card:nth-child(3) {
-  --optim-pad-scale: 1.12;
-  min-height: clamp(352px, 36vw, 410px);
-}
-.optim-card:nth-child(4) {
-  --optim-pad-scale: 1.18;
-  min-height: clamp(392px, 39.5vw, 454px);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.08);
 }
 
 .optim-card-index {
@@ -1980,8 +1975,7 @@ button {
   display: flex;
   align-items: baseline;
   gap: clamp(6px, 1.2cqi, 10px);
-  margin-top: calc(var(--optim-pad) * 0.42 * var(--optim-pad-scale));
-  transition: margin-top 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  margin-top: clamp(10px, 1.8cqi, 14px);
 }
 
 .optim-card-value {
@@ -2002,9 +1996,12 @@ button {
   display: flex;
   flex-direction: column;
   gap: var(--optim-inner-gap);
-  margin-top: auto;
-  padding-top: calc(var(--optim-pad) * 0.78 * var(--optim-pad-scale));
-  transition: padding-top 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  margin-top: clamp(16px, 2.8cqi, 24px);
+  transition: margin-top 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.optim-card:hover .optim-card-body {
+  margin-top: clamp(20px, 3.2cqi, 28px);
 }
 
 .optim-card-icon {
@@ -2069,7 +2066,6 @@ button {
   .optim-card:nth-child(2),
   .optim-card:nth-child(3),
   .optim-card:nth-child(4) {
-    --optim-pad-scale: 1;
     min-height: 320px;
   }
 

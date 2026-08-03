@@ -51,7 +51,7 @@ const stats = [
     value: "60%",
     unit: "cost saved",
     title: "Lower design cost",
-    desc: "Cuts design-cycle cost by 40% versus manual and legacy flows.",
+    desc: "Cuts design-cycle cost by 60% versus manual and legacy flows.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 3v18M16.5 6.5c0-1.93-2-3.5-4.5-3.5S7.5 4.57 7.5 6.5s2 3 4.5 3 4.5 1.07 4.5 3-2 3.5-4.5 3.5-4.5-1.57-4.5-3.5" />

@@ -57,7 +57,7 @@ export default function Home() {
               <span className="vw-copy-index">Platform</span>
               <span className="vw-copy-text">
                 circuitEvolve is building an <strong>AI-powered platform</strong>{" "}
-                that automates <strong>analog circuit design</strong>, from an
+                that accelerates <strong>analog circuit design</strong>, from an
                 initial specification and selected topology all the way to a
                 layout-ready result. By intelligently iterating circuit
                 parameters through simulation, it helps engineers reach{" "}

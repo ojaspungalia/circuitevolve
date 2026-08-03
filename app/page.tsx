@@ -67,6 +67,8 @@ export default function Home() {
             </p>
           </div>
         </div>
+
+        <ScrollDownArrow targetId="optim" />
       </section>
 
       {/* ── Optim Stats ──────────────────────────────────────────────────── */}

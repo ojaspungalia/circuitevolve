@@ -1604,6 +1604,7 @@ button {
   align-items: center;
   justify-content: flex-start;
   gap: clamp(24px, 4vw, 48px);
+  transform: translateY(clamp(-60px, -8vh, -24px));
 }
 
 .video-window-copy {
@@ -1697,6 +1698,7 @@ button {
   .video-window-wrap {
     flex-direction: column;
     align-items: center;
+    transform: translateY(clamp(-32px, -4vh, -12px));
   }
 
   .video-window-copy {

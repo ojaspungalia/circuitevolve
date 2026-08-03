@@ -3245,27 +3245,10 @@ button {
   overflow: hidden;
 }
 
-.demo-card-right .df-submit::after {
-  content: "→";
-  position: absolute;
-  right: 24px;
-  top: 50%;
-  transform: translateY(-50%) translateX(0);
-  transition: transform 220ms ease;
-  font-style: normal;
-  font-family: inherit;
-  font-size: 13px;
-  letter-spacing: 0;
-}
-
 .demo-card-right .df-submit:hover {
   background: #1a1a1a;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
   transform: translateY(-1px);
-}
-
-.demo-card-right .df-submit:hover::after {
-  transform: translateY(-50%) translateX(3px);
 }
 
 .demo-card-right .df-submit:active {

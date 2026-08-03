@@ -53,22 +53,32 @@ export default function Home() {
           <VideoWindow />
 
           <div className="video-window-copy">
-            <p>
-              circuitEvolve is building an <strong>AI-powered platform</strong> that
-              automates <strong>analog circuit design</strong>, from an initial
-              specification and selected topology all the way to a
-              layout-ready result. By intelligently iterating circuit
-              parameters through simulation, it helps engineers reach{" "}
-              <strong>target specifications</strong> significantly faster,
-              without disrupting their existing workflows.
+            <p className="vw-copy-para" data-reveal>
+              <span className="vw-copy-index">01 · Platform</span>
+              <span className="vw-copy-text">
+                circuitEvolve is building an <strong>AI-powered platform</strong>{" "}
+                that automates <strong>analog circuit design</strong>, from an
+                initial specification and selected topology all the way to a
+                layout-ready result. By intelligently iterating circuit
+                parameters through simulation, it helps engineers reach{" "}
+                <strong>target specifications</strong> significantly faster,
+                without disrupting their existing workflows.
+              </span>
             </p>
-            <p>
-              The platform is <strong>training-free</strong>,{" "}
-              <strong>simulator-agnostic</strong>, and{" "}
-              <strong>PDK-agnostic</strong>, adapting seamlessly across
-              technologies, tools, and circuit types, with no proprietary
-              datasets or changes to established design environments
-              required.
+            <p
+              className="vw-copy-para"
+              data-reveal
+              style={{ "--reveal-delay": "160ms" } as CSSProperties}
+            >
+              <span className="vw-copy-index">02 · Compatibility</span>
+              <span className="vw-copy-text">
+                The platform is <strong>training-free</strong>,{" "}
+                <strong>simulator-agnostic</strong>, and{" "}
+                <strong>PDK-agnostic</strong>, adapting seamlessly across
+                technologies, tools, and circuit types, with no proprietary
+                datasets or changes to established design environments
+                required.
+              </span>
             </p>
           </div>
         </div>

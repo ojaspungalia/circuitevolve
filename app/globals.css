@@ -1609,7 +1609,7 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 26px;
+  gap: 34px;
   flex: 1;
   max-width: 560px;
   padding-left: clamp(32px, 7vw, 88px);
@@ -1617,22 +1617,58 @@ button {
   font-size: clamp(16px, 1.35vw, 19px);
   font-weight: 500;
   line-height: 1.8;
-  text-align: justify;
-  text-justify: inter-word;
 }
 
-.video-window-copy p {
+.vw-copy-para {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vw-copy-index {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(6, 6, 6, 0.38);
+}
+
+.vw-copy-text {
   position: relative;
+  display: block;
   padding-left: 18px;
-  border-left: 2px solid rgba(6, 6, 6, 0.14);
-  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), border-color 320ms ease;
-  transform-origin: left center;
+  text-align: justify;
+  text-justify: inter-word;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), color 320ms ease;
+  transform-origin: right center;
   cursor: default;
 }
 
-.video-window-copy p:hover {
+.vw-copy-text::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  bottom: 0.15em;
+  width: 2px;
+  background: rgba(6, 6, 6, 0.14);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1), background 320ms ease;
+}
+
+.vw-copy-para.is-visible .vw-copy-text::before {
+  transform: scaleY(1);
+}
+
+.vw-copy-text:hover {
   transform: scale(1.045);
-  border-color: rgba(6, 6, 6, 0.55);
+  color: rgba(6, 6, 6, 0.82);
+}
+
+.vw-copy-text:hover::before {
+  background: rgba(6, 6, 6, 0.55);
 }
 
 .video-window-copy strong {
@@ -1647,7 +1683,7 @@ button {
   transition: background-size 420ms ease, color 320ms ease;
 }
 
-.video-window-copy p:hover strong {
+.vw-copy-text:hover strong {
   background-size: 100% 1px;
 }
 
@@ -1661,13 +1697,20 @@ button {
     max-width: 100%;
     padding-left: 0;
     align-items: center;
-    text-align: center;
   }
 
-  .video-window-copy p {
+  .vw-copy-para {
+    align-items: center;
+  }
+
+  .vw-copy-text {
     padding-left: 0;
-    border-left: none;
+    text-align: center;
     transform-origin: center;
+  }
+
+  .vw-copy-text::before {
+    display: none;
   }
 }
 

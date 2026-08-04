@@ -2243,6 +2243,28 @@ button {
   }
 }
 
+/* ══════════════════════════════════════════════════════════════
+   AVINASH VIDEO (between metric cards and feature cards)
+══════════════════════════════════════════════════════════════ */
+
+.avinash-video-section {
+  min-height: auto;
+  padding-top: clamp(40px, 6vh, 72px);
+  padding-bottom: clamp(40px, 6vh, 72px);
+  display: flex;
+  justify-content: center;
+}
+
+.av-shell {
+  width: min(900px, 100%);
+  margin: 0 auto;
+  animation: none;
+}
+
+.av-main {
+  height: clamp(280px, 42vw, 500px);
+}
+
 /* ── Titlebar ─────────────────────────────────────────── */
 
 .vw-titlebar {

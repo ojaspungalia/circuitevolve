@@ -1,4 +1,5 @@
 import VideoWindow from "@/components/VideoWindow";
+import AvinashVideo from "@/components/AvinashVideo";
 import ScrollReveal from "@/components/ScrollReveal";
 import DemoForm from "@/components/DemoForm";
 import DemoScrollButton from "@/components/DemoScrollButton";
@@ -73,6 +74,13 @@ export default function Home() {
 
       {/* ── Optim Stats ──────────────────────────────────────────────────── */}
       <OptimStats />
+
+      {/* ── Avinash video ────────────────────────────────────────────────── */}
+      <section className="section theme-light avinash-video-section">
+        <div className="section-inner">
+          <AvinashVideo />
+        </div>
+      </section>
 
       {/* ── Optimizer Points ────────────────────────────────────────────── */}
       <section className="section theme-light optimizer-section">

@@ -2249,20 +2249,21 @@ button {
 
 .avinash-video-section {
   min-height: auto;
-  padding-top: clamp(40px, 6vh, 72px);
+  padding-top: clamp(24px, 4vh, 48px);
   padding-bottom: clamp(40px, 6vh, 72px);
   display: flex;
   justify-content: center;
 }
 
 .av-shell {
-  width: min(900px, 100%);
+  width: min(1140px, 100%);
   margin: 0 auto;
   animation: none;
+  transform: translateY(-24px);
 }
 
 .av-main {
-  height: clamp(280px, 42vw, 500px);
+  height: clamp(360px, 52vw, 640px);
 }
 
 /* ── Titlebar ─────────────────────────────────────────── */

@@ -3,7 +3,6 @@ import type { CSSProperties } from "react";
 const stats = [
   {
     id: "devices",
-    index: "01",
     value: "1000+",
     unit: "devices",
     title: "Device library coverage",
@@ -18,7 +17,6 @@ const stats = [
   },
   {
     id: "pvt",
-    index: "02",
     value: "200+",
     unit: "PVT",
     title: "Full corner verification",
@@ -34,7 +32,6 @@ const stats = [
   },
   {
     id: "speed",
-    index: "03",
     value: "12.4x",
     unit: "faster",
     title: "Faster convergence",
@@ -47,14 +44,14 @@ const stats = [
   },
   {
     id: "cost",
-    index: "04",
     value: "20%",
     unit: "reduction",
     title: "Time to tapeout",
     desc: "Automated sizing translates to 20% qicker analog tapeout",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 3v18M16.5 6.5c0-1.93-2-3.5-4.5-3.5S7.5 4.57 7.5 6.5s2 3 4.5 3 4.5 1.07 4.5 3-2 3.5-4.5 3.5-4.5-1.57-4.5-3.5" />
+        <rect x="5" y="5" width="14" height="14" rx="2" />
+        <path d="M9 9h6v6H9zM9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" />
       </svg>
     ),
   },
@@ -83,8 +80,6 @@ export default function OptimStats() {
               data-reveal
               style={{ "--reveal-delay": `${index * 90}ms` } as CSSProperties}
             >
-              <span className="optim-card-index">{stat.index}</span>
-
               <div className="optim-card-top">
                 <span className="optim-card-value">{stat.value}</span>
                 <span className="optim-card-unit">{stat.unit}</span>

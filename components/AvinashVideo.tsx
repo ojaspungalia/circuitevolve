@@ -28,14 +28,6 @@ export default function AvinashVideo() {
 
   return (
     <div className="vw-shell av-shell" ref={shellRef} data-reveal>
-      <div className="vw-titlebar">
-        <div className="vw-traffic">
-          <span className="vw-dot vw-dot--close" />
-          <span className="vw-dot vw-dot--min" />
-          <span className="vw-dot vw-dot--max" />
-        </div>
-      </div>
-
       <div className="vw-main av-main">
         <video
           ref={videoRef}
